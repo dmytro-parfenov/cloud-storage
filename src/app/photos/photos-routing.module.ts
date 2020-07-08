@@ -11,7 +11,8 @@ const routes: Routes = [
     data: { title: 'Photos'},
     resolve: {
       sortParams: SortParamsResolverService
-    }
+    },
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange'
   }
 ];
 
