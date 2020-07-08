@@ -1,4 +1,4 @@
-# CloudStorage
+# Cloud storage
 
 This project simulates the cloud storage app
 
