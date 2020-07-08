@@ -1,1 +1,12 @@
 <cs-page-header [title]="pageTitle"></cs-page-header>
+
+<section>
+  <header>
+    header
+  </header>
+  <main>
+    <div class="photo" *ngFor="let photo of photos">
+      <cs-photo [url]="photo.url" [name]="photo.name" [size]="photo.size"></cs-photo>
+    </div>
+  </main>
+</section>

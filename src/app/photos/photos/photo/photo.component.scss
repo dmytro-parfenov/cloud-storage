@@ -1,0 +1,23 @@
+@import "~src/styles/utils";
+
+figure {
+  margin: 0;
+  padding: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .image {
+    background-color: $color-dark;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 100%;
+  }
+
+  figcaption {
+    p {
+      margin: 8px 0 0 0;
+    }
+  }
+}

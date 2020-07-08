@@ -1,0 +1,33 @@
+@import "~src/styles/utils";
+
+section {
+  header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $color-grey;
+  }
+
+  main {
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .photo {
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background 0.2s ease-in-out;
+
+      &:hover {
+        background: rgba($color-grey, 0.1);
+      }
+    }
+  }
+}

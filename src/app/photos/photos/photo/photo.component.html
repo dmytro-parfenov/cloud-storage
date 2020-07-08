@@ -1,0 +1,7 @@
+<figure>
+  <div class="image" [ngStyle]="{'background-image':'url(' + url + ')'}"></div>
+  <figcaption>
+    <p *ngIf="name">{{name}}</p>
+    <p *ngIf="size">{{size}}</p>
+  </figcaption>
+</figure>

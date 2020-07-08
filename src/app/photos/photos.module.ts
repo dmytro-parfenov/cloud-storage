@@ -6,10 +6,11 @@ import {PHOTOS_PROVIDER} from './shared/photos-provider.key';
 import {LocalPhotosProviderService} from './shared/photos-provider/local-photos-provider.service';
 import {SharedModule} from '../shared/shared.module';
 import {SortParamsResolverService} from './resolver/sort-params-resolver.service';
+import { PhotoComponent } from './photos/photo/photo.component';
 
 
 @NgModule({
-  declarations: [PhotosComponent],
+  declarations: [PhotosComponent, PhotoComponent],
   imports: [
     PhotosRoutingModule,
     SharedModule
