@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PageTitleComponent} from './page-title/page-title.component';
+import {PageHeaderComponent} from './page-header/page-header.component';
 
 
 @NgModule({
-  declarations: [PageTitleComponent],
+  declarations: [PageHeaderComponent],
   imports: [
     CommonModule
   ],
   exports: [
     CommonModule,
-    PageTitleComponent
+    PageHeaderComponent
   ]
 })
 export class SharedModule { }

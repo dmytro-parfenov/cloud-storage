@@ -16,7 +16,6 @@ const routes: Routes = [
   },
   {
     path: 'photos',
-    data: { title: 'Photos' },
     loadChildren: () => import('./photos/photos.module').then(m => m.PhotosModule)
   },
   {

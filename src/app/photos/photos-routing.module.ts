@@ -1,12 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PhotosComponent} from './photos/photos.component';
+import {SortParamsResolverService} from './resolver/sort-params-resolver.service';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PhotosComponent
+    component: PhotosComponent,
+    data: { title: 'Photos'},
+    resolve: {
+      sortParams: SortParamsResolverService
+    }
   }
 ];
 

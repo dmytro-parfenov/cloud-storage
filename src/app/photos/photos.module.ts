@@ -5,6 +5,7 @@ import {PhotosComponent} from './photos/photos.component';
 import {PHOTOS_PROVIDER} from './shared/photos-provider.key';
 import {LocalPhotosProviderService} from './shared/photos-provider/local-photos-provider.service';
 import {SharedModule} from '../shared/shared.module';
+import {SortParamsResolverService} from './resolver/sort-params-resolver.service';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {SharedModule} from '../shared/shared.module';
     SharedModule
   ],
   providers: [
-    {provide: PHOTOS_PROVIDER, useClass: LocalPhotosProviderService}
+    {provide: PHOTOS_PROVIDER, useClass: LocalPhotosProviderService},
+    SortParamsResolverService
   ]
 })
 export class PhotosModule { }
