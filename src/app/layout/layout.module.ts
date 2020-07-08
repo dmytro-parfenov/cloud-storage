@@ -1,13 +1,20 @@
 import {NgModule} from '@angular/core';
 import {StubComponent} from './stub/stub.component';
 import {SharedModule} from '../shared/shared.module';
+import { HeaderComponent } from './header/header.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import { SearchComponent } from './header/search/search.component';
+import { ProfileComponent } from './header/profile/profile.component';
 
 
 @NgModule({
-  declarations: [StubComponent],
-  exports: [StubComponent],
+  declarations: [StubComponent, HeaderComponent, SearchComponent, ProfileComponent],
+    exports: [StubComponent, HeaderComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class LayoutModule { }

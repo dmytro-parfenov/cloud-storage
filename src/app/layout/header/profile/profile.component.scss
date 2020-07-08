@@ -1,0 +1,16 @@
+section {
+  display: grid;
+  grid-template-columns: 24px auto 24px;
+  grid-gap: 8px;
+  align-items: center;
+
+  .name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .action {
+    cursor: pointer;
+  }
+}
