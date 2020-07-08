@@ -2,12 +2,12 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'cs-photos',
-  templateUrl: './photos.component.html',
-  styleUrls: ['./photos.component.scss'],
+  selector: 'cs-stub',
+  templateUrl: './stub.component.html',
+  styleUrls: ['./stub.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PhotosComponent implements OnInit {
+export class StubComponent implements OnInit {
 
   readonly pageTitle: string;
 
