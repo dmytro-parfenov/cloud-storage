@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {SidenavVisibilityService} from '../../core/sidenav-visibility.service';
+import {SidenavVisibilityService} from '../../core/sidenav/sidenav-visibility.service';
 
 @Component({
   selector: 'cs-sidenav',

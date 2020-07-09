@@ -1,0 +1,3 @@
+<section *ngFor="let item of items$ | async; trackBy: trackFn">
+  <ng-template [cdkPortalOutlet]="item.portal"></ng-template>
+</section>

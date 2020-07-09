@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {SidenavProjectionService} from '../../../core/sidenav/sidenav-projection.service';
+import {UpgradeAccountComponent} from '../../../shared/upgrade-account/upgrade-account.component';
 
 @Component({
   selector: 'cs-profile',
@@ -8,9 +10,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly sidenavProjectionService: SidenavProjectionService) { }
 
   ngOnInit(): void {
+    this.sidenavProjectionService.attach<UpgradeAccountComponent, null>(UpgradeAccountComponent);
   }
 
 }

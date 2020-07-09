@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 
+/**
+ * The service provides opportunity to control sidenav visibility
+ */
 @Injectable({
   providedIn: 'root'
 })

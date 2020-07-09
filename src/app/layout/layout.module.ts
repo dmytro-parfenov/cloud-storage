@@ -11,6 +11,8 @@ import {SidenavItemComponent} from './sidenav/sidenav-item/sidenav-item.componen
 import {MatBadgeModule} from '@angular/material/badge';
 import {RouterModule} from '@angular/router';
 import {PageHeaderComponent} from './page-header/page-header.component';
+import { SidenavProjectionContentComponent } from './sidenav-projection-content/sidenav-projection-content.component';
+import {PortalModule} from '@angular/cdk/portal';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {PageHeaderComponent} from './page-header/page-header.component';
     ProfileComponent,
     SidenavComponent,
     SidenavItemComponent,
-    PageHeaderComponent
+    PageHeaderComponent,
+    SidenavProjectionContentComponent
   ],
   exports: [StubComponent, HeaderComponent, SidenavComponent, PageHeaderComponent],
   imports: [
@@ -29,7 +32,8 @@ import {PageHeaderComponent} from './page-header/page-header.component';
     MatInputModule,
     MatIconModule,
     MatBadgeModule,
-    RouterModule
+    RouterModule,
+    PortalModule
   ]
 })
 export class LayoutModule { }
