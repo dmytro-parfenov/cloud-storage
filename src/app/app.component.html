@@ -1,10 +1,10 @@
 <section class="app">
-  <aside [class.opened]="opened">
-    <div class="backdrop" (click)="toggle()"></div>
+  <aside [class.opened]="sidenavVisible$ | async">
+    <div class="backdrop" (click)="closeSideNav()"></div>
     <div class="content">
       <header>
-        <mat-icon class="menu item" (click)="toggle()">{{opened ? 'close' : 'menu'}}</mat-icon>
-        <a routerLink="/" class="logo logo">
+        <mat-icon class="menu item" (click)="toggleSideNav()">{{(sidenavVisible$ | async) ? 'close' : 'menu'}}</mat-icon>
+        <a routerLink="/" class="logo logo" (click)="closeSideNav()">
           <img src="./assets/images/logo.svg" alt="logo">
         </a>
       </header>

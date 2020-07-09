@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {SidenavVisibilityService} from '../../core/sidenav-visibility.service';
 
 @Component({
   selector: 'cs-sidenav',
@@ -8,9 +9,13 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly sidenavVisibilityService: SidenavVisibilityService) { }
 
   ngOnInit(): void {
+  }
+
+  closeSideNav(): void {
+    this.sidenavVisibilityService.close();
   }
 
 }

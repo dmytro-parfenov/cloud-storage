@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {SidenavVisibilityService} from './core/sidenav-visibility.service';
 
 @Component({
   selector: 'cs-root',
@@ -7,9 +8,16 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
 
-  opened = false;
+  readonly sidenavVisible$ = this.sidenavVisibilityService.visible$;
 
-  toggle(): void {
-    this.opened = !this.opened;
+  constructor(private readonly sidenavVisibilityService: SidenavVisibilityService) {
+  }
+
+  toggleSideNav(): void {
+    this.sidenavVisibilityService.toggle();
+  }
+
+  closeSideNav(): void {
+    this.sidenavVisibilityService.close();
   }
 }
