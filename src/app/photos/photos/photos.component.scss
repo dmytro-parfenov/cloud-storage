@@ -4,6 +4,23 @@ section {
   header {
     padding-bottom: 16px;
     border-bottom: 1px solid $color-grey;
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .actions, .sorting {
+      align-items: center;
+    }
+
+    .sorting {
+      @include media-breakpoint-up(md) {
+        justify-self: flex-end;
+      }
+    }
   }
 
   main {

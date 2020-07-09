@@ -2,8 +2,14 @@
 
 <section>
   <header>
-    header
+    <div class="actions">
+      <cs-actions></cs-actions>
+    </div>
+    <div class="sorting">
+      <cs-sorting></cs-sorting>
+    </div>
   </header>
+
   <main>
     <div class="photo" *ngFor="let photo of photos">
       <cs-photo [url]="photo.url" [name]="photo.name" [size]="photo.size"></cs-photo>
