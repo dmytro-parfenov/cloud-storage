@@ -1,5 +1,5 @@
 export enum SortType {
   Name = 'Name',
   Size = 'Size',
-  LastModifiedDate = 'LastModifiedDate'
+  LastModifiedDate = 'Last modified date'
 }
