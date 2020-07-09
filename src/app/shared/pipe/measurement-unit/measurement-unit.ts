@@ -1,1 +1,1 @@
-export type MeasurementUnit = 'Kb' | 'Mb';
+export type MeasurementUnit = 'Kb' | 'Mb' | 'Gb';

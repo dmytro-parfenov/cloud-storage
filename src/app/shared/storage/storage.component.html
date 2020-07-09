@@ -1,0 +1,14 @@
+<section>
+  <header>
+    <div class="info">{{used | measurementUnit:'Kb':'Gb' | number:'1.0-1'}} Gb / {{total | measurementUnit:'Kb':'Gb' | number:'1.0-1'}} Gb</div>
+    <div>
+      <button mat-icon-button color="primary" aria-label="upgrade">
+        <mat-icon>control_point</mat-icon>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <mat-progress-bar mode="determinate" [value]="usedInPercent"></mat-progress-bar>
+  </main>
+</section>
