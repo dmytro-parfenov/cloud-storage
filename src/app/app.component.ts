@@ -6,4 +6,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  opened = false;
+
+  toggle(): void {
+    this.opened = !this.opened;
+  }
 }

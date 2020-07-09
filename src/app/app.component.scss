@@ -1,20 +1,139 @@
 @import "~src/styles/utils";
 
-section {
-  padding: 16px;
+$sidenav-header-height: 60px;
+$page-indent: 16px;
+
+.app {
   height: 100%;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 
-  header {
-    padding-bottom: 16px;
-    border-bottom: 1px solid $color-grey;
+  @include media-breakpoint-up(md) {
+    display: grid;
+    grid-template-columns: 250px auto;
   }
 
-  main {
-    margin-top: 16px;
-    height: 100%;
-    overflow: auto;
+  aside {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $sidenav-header-height;
+    z-index: 100;
+
+    @include media-breakpoint-up(md) {
+      position: relative;
+      bottom: unset;
+      left: unset;
+      width: unset;
+      z-index: unset;
+      height: 100%;
+    }
+
+    &.opened {
+      height: 100%;
+
+      .content {
+        height: 90%;
+
+        @include media-breakpoint-up(md) {
+          height: 100%;
+        }
+      }
+    }
+
+    .backdrop {
+      background: rgba($color-dark, 0.6);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: $color-dark;
+      color: $color-light;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      header {
+        height: $sidenav-header-height;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 8px;
+        justify-items: center;
+        align-items: center;
+
+        .item {
+          cursor: pointer;
+          transition: opacity 0.2s ease-in-out;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+
+        .menu {
+          @include media-breakpoint-up(md) {
+            display: none;
+          }
+        }
+
+        .logo {
+          @include media-breakpoint-up(md) {
+            grid-column-start: 2;
+          }
+        }
+
+        img {
+          height: $sidenav-header-height - 16px;
+
+          transition: opacity 0.2s ease-in-out;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      section {
+        flex: 1;
+        padding: 8px;
+        overflow-y: auto;
+      }
+    }
+  }
+
+  .page {
+    height: calc(100% - #{$sidenav-header-height});
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    @include media-breakpoint-up(md) {
+      height: 100%;
+    }
+
+    header {
+      margin: 0 $page-indent;
+      padding-bottom: 16px;
+      border-bottom: 1px solid $color-grey;
+    }
+
+    main {
+      padding: $page-indent;
+      height: 100%;
+      overflow-y: auto;
+    }
   }
 }

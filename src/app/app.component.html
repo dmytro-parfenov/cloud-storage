@@ -1,9 +1,26 @@
-<section>
-  <header>
-    <cs-header></cs-header>
-  </header>
+<section class="app">
+  <aside [class.opened]="opened">
+    <div class="backdrop" (click)="toggle()"></div>
+    <div class="content">
+      <header>
+        <mat-icon class="menu item" (click)="toggle()">{{opened ? 'close' : 'menu'}}</mat-icon>
+        <a routerLink="/" class="logo logo">
+          <img src="./assets/images/logo.svg" alt="logo">
+        </a>
+      </header>
 
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+      <section>
+        <div>sidenav</div>
+      </section>
+    </div>
+  </aside>
+  <section class="page">
+    <header>
+      <cs-header></cs-header>
+    </header>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </section>
 </section>
