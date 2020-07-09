@@ -6,8 +6,8 @@ export class SortParams {
   readonly type: SortType;
   readonly order: SortOrder;
 
-  constructor({type, order}: Partial<SortParams>) {
-    this.type = type || SortType.LastModifiedDate;
-    this.order = order || SortOrder.Desc;
+  constructor({type, order}: Partial<SortParams> = {}) {
+    this.type = type || SortType.Name;
+    this.order = order || SortOrder.Asc;
   }
 }

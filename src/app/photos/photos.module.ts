@@ -11,6 +11,8 @@ import { ActionsComponent } from './photos/actions/actions.component';
 import { SortingComponent } from './photos/sorting/sorting.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     PhotosRoutingModule,
     SharedModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: PHOTOS_PROVIDER, useClass: LocalPhotosProviderService},

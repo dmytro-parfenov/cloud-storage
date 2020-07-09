@@ -6,12 +6,12 @@
       <cs-actions></cs-actions>
     </div>
     <div class="sorting">
-      <cs-sorting></cs-sorting>
+      <cs-sorting [sortParams]="sortParams$ | async" (sortParamsChange)="onSortParamsUpdate($event)"></cs-sorting>
     </div>
   </header>
 
   <main>
-    <div class="photo" *ngFor="let photo of photos; trackBy: trackFn">
+    <div class="photo" *ngFor="let photo of filteredPhotos$ | async; trackBy: trackFn">
       <cs-photo [url]="photo.url" [name]="photo.name" [size]="photo.size"></cs-photo>
     </div>
   </main>

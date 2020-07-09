@@ -1,1 +1,5 @@
-<p>sorting works!</p>
+<form [formGroup]="form">
+  <mat-button-toggle-group formControlName="type">
+    <mat-button-toggle *ngFor="let type of types" [value]="type">{{type}}</mat-button-toggle>
+  </mat-button-toggle-group>
+</form>
