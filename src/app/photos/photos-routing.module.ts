@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: PhotosComponent,
-    data: { title: 'Photos'},
+    data: { pageTitle: 'Photos'},
     resolve: {
       sortParams: SortParamsResolverService
     },

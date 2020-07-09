@@ -1,6 +1,5 @@
 import {SortParams} from './shared/sort/sort-params';
-import {PageHeader} from '../../core/page-header';
 
-export interface PhotosResolvedData extends PageHeader {
+export interface PhotosResolvedData {
   sortParams: SortParams;
 }

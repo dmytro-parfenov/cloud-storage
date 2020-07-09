@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {PageHeader} from '../../core/page-header';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'cs-stub',
@@ -10,20 +8,10 @@ import {PageHeader} from '../../core/page-header';
 })
 export class StubComponent implements OnInit {
 
-  pageTitle = '';
-
-  constructor(private readonly activatedRoute: ActivatedRoute,
-              private readonly changeDetectorRef: ChangeDetectorRef) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(data => this.onRouterDataChange(data as PageHeader));
-  }
-
-  private onRouterDataChange(data: PageHeader): void {
-    this.pageTitle = data.title;
-
-    this.changeDetectorRef.markForCheck();
   }
 
 }

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PhotosResolvedData} from './photos-resolved-data';
 import {QueryParamsService} from '../../core/query-params.service';
@@ -18,8 +18,6 @@ import {PhotosSorter} from './photos-sorter';
 })
 export class PhotosComponent implements OnInit {
 
-  pageTitle = '';
-
   readonly photos$ = new BehaviorSubject<Photo[]>([]);
 
   readonly sortParams$ = new BehaviorSubject<SortParams>(new SortParams());
@@ -29,7 +27,6 @@ export class PhotosComponent implements OnInit {
   );
 
   constructor(private readonly activatedRoute: ActivatedRoute,
-              private readonly changeDetectorRef: ChangeDetectorRef,
               private readonly queryParamsService: QueryParamsService,
               @Inject(PHOTOS_PROVIDER) private readonly photosProviderService: PhotosProvider) {}
 
@@ -51,10 +48,7 @@ export class PhotosComponent implements OnInit {
   }
 
   private onRouterDataChange(data: PhotosResolvedData): void {
-    this.pageTitle = data.title;
     this.sortParams$.next(data.sortParams);
-
-    this.changeDetectorRef.markForCheck();
   }
 
 }

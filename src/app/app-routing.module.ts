@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'files',
-    data: { title: 'Files' },
+    data: { pageTitle: 'Files' },
     component: StubComponent
   },
   {
@@ -20,27 +20,27 @@ const routes: Routes = [
   },
   {
     path: 'sharing',
-    data: { title: 'Sharing' },
+    data: { pageTitle: 'Sharing' },
     component: StubComponent
   },
   {
     path: 'links',
-    data: { title: 'Links' },
+    data: { pageTitle: 'Links' },
     component: StubComponent
   },
   {
     path: 'events',
-    data: { title: 'Events' },
+    data: { pageTitle: 'Events' },
     component: StubComponent
   },
   {
     path: 'get-started',
-    data: { title: 'Get started' },
+    data: { pageTitle: 'Get started' },
     component: StubComponent
   },
   {
     path: '**',
-    data: { title: 'Page not found' },
+    data: { pageTitle: 'Page not found' },
     component: StubComponent
   }
 ];
