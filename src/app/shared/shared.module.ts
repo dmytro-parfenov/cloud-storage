@@ -5,10 +5,11 @@ import { StorageComponent } from './storage/storage.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { UpgradeAccountComponent } from './upgrade-account/upgrade-account.component';
 
 
 @NgModule({
-  declarations: [MeasurementUnitPipe, StorageComponent],
+  declarations: [MeasurementUnitPipe, StorageComponent, UpgradeAccountComponent],
   imports: [
     CommonModule,
     MatProgressBarModule,
@@ -18,7 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
   exports: [
     CommonModule,
     MeasurementUnitPipe,
-    StorageComponent
+    StorageComponent,
+    UpgradeAccountComponent
   ]
 })
 export class SharedModule { }
