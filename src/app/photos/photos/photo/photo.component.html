@@ -2,6 +2,6 @@
   <div class="image" [ngStyle]="{'background-image':'url(' + url + ')'}"></div>
   <figcaption>
     <p *ngIf="name">{{name}}</p>
-    <p *ngIf="size">{{size}}</p>
+    <p *ngIf="size" class="size">{{size | measurementUnit:'Kb':'Mb' | number:'1.0-1'}} Mb</p>
   </figcaption>
 </figure>
