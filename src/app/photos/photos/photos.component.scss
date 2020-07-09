@@ -41,9 +41,35 @@ section {
       cursor: pointer;
       border-radius: 3px;
       transition: background 0.2s ease-in-out;
+      position: relative;
 
       &:hover {
         background: rgba($color-grey, 0.1);
+
+        .selection {
+          display: block;
+        }
+      }
+
+      .selection {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+
+        @include media-breakpoint-up(md) {
+          display: none;
+        }
+
+        .selection-icon {
+          color: $color-grey;
+          transition: color 0.2s ease-in-out;
+        }
+
+        &:hover {
+          .selection-icon {
+            color: $color-dark;
+          }
+        }
       }
     }
   }
