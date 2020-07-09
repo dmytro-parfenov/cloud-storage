@@ -13,7 +13,11 @@ import {Subject} from 'rxjs';
 })
 export class SortingComponent implements OnInit, OnDestroy {
 
-  @Input() set sortParams(sortParams: SortParams) {
+  @Input() set sortParams(sortParams: SortParams | null) {
+    if (!sortParams) {
+      return;
+    }
+
     this.form.get('type')?.setValue(sortParams.type, {emitEvent: false});
   }
 
