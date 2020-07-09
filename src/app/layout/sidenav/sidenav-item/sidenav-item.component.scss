@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  padding: 16px 16px 0 0;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 24px auto;
+  grid-gap: 8px;
+  align-items: center;
+
+  span {
+    text-transform: uppercase;
+  }
+}

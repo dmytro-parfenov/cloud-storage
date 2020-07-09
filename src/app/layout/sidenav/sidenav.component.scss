@@ -1,0 +1,42 @@
+@import "~src/styles/utils";
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  nav {
+    .items {
+      display: flex;
+      flex-direction: column;
+
+      a {
+        text-decoration: none;
+        color: unset;
+      }
+
+      .item {
+        padding-bottom: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        &:hover:not(.active) {
+          opacity: 0.8;
+        }
+
+        &.active {
+          color: $color-blue;
+        }
+      }
+    }
+  }
+
+  .content {
+    margin-top: 16px;
+  }
+}
