@@ -35,6 +35,13 @@ export class PhotosComponent implements OnInit {
     ).subscribe();
   }
 
+  /**
+   * Track function for the *ngFor to track only changed items
+   */
+  trackFn(index: number): number {
+    return index;
+  }
+
   private onRouterDataChange(data: PhotosResolvedData): void {
     this.pageTitle = data.title;
 

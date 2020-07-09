@@ -11,7 +11,7 @@
   </header>
 
   <main>
-    <div class="photo" *ngFor="let photo of photos">
+    <div class="photo" *ngFor="let photo of photos; trackBy: trackFn">
       <cs-photo [url]="photo.url" [name]="photo.name" [size]="photo.size"></cs-photo>
     </div>
   </main>
