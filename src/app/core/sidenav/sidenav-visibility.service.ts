@@ -13,8 +13,8 @@ export class SidenavVisibilityService {
 
   constructor() { }
 
-  toggle(): void {
-    this.visible$.next(!this.visible$.getValue());
+  open(): void {
+    this.visible$.next(true);
   }
 
   close(): void {

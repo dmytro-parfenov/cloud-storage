@@ -3,7 +3,7 @@
     <div class="backdrop" (click)="closeSideNav()"></div>
     <div class="content">
       <header>
-        <mat-icon class="menu item" (click)="toggleSideNav()">{{(sidenavVisible$ | async) ? 'close' : 'menu'}}</mat-icon>
+        <mat-icon class="menu item" (click)="openSideNav()">menu</mat-icon>
         <a routerLink="/" class="logo logo" (click)="closeSideNav()">
           <img src="./assets/images/logo.svg" alt="logo">
         </a>

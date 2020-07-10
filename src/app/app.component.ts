@@ -13,11 +13,11 @@ export class AppComponent {
   constructor(private readonly sidenavVisibilityService: SidenavVisibilityService) {
   }
 
-  toggleSideNav(): void {
-    this.sidenavVisibilityService.toggle();
-  }
-
   closeSideNav(): void {
     this.sidenavVisibilityService.close();
+  }
+
+  openSideNav(): void {
+    this.sidenavVisibilityService.open();
   }
 }

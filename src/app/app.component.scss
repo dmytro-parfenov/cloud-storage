@@ -37,6 +37,12 @@ $page-indent: 16px;
       .content {
         bottom: 0;
 
+        header {
+          .menu {
+            display: none;
+          }
+        }
+
         main {
           opacity: 1;
         }
@@ -104,9 +110,7 @@ $page-indent: 16px;
         }
 
         .logo {
-          @include media-breakpoint-up(md) {
-            grid-column-start: 2;
-          }
+          grid-column-start: 2;
         }
 
         img {
