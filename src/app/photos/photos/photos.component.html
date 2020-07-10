@@ -10,7 +10,7 @@
 
   <main>
     <div class="photo" *ngFor="let photo of filteredPhotos$ | async; trackBy: trackFn">
-      <div class="selection">
+      <div class="selection" [class.active]="false">
         <mat-icon class="selection-icon">check_circle</mat-icon>
       </div>
       <cs-photo [url]="photo.url" [name]="photo.name" [size]="photo.size"></cs-photo>

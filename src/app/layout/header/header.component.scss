@@ -4,6 +4,7 @@ section {
   display: grid;
   grid-template-columns:  auto;
   grid-gap: 8px;
+  margin: 8px 0;
 
   @include media-breakpoint-up(md) {
     grid-template-columns: 3fr 1fr;

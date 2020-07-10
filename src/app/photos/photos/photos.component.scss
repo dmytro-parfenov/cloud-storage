@@ -47,7 +47,8 @@ section {
         background: rgba($color-grey, 0.1);
 
         .selection {
-          display: block;
+          opacity: 1 !important;
+          pointer-events: auto !important;
         }
       }
 
@@ -57,7 +58,12 @@ section {
         top: 16px;
 
         @include media-breakpoint-up(md) {
-          display: none;
+          transition: opacity 0.2s ease-in-out;
+
+          &:not(.active) {
+            opacity: 0;
+            pointer-events: none;
+          }
         }
 
         .selection-icon {
@@ -65,7 +71,7 @@ section {
           transition: color 0.2s ease-in-out;
         }
 
-        &:hover {
+        &.active, &:hover {
           .selection-icon {
             color: $color-dark;
           }
