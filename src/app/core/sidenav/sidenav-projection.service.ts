@@ -1,13 +1,9 @@
-import {Injectable, Injector, StaticProvider, Type} from '@angular/core';
-import {ComponentPortal} from '@angular/cdk/portal';
-import {SidenavProjectionItem} from './sidenav-projection-item';
+import {Injectable} from '@angular/core';
+import {SidenavAttachment} from './sidenav-attachment';
 import {BehaviorSubject} from 'rxjs';
-import {SIDENAV_PROJECTION_ITEM_DATA} from './sidenav-projection-idem-data.key';
 
 /**
- * The service that provides opportunity to attach any components inside the {@link SidenavProjectionContentComponent}
- *
- * TODO: Implementation is dirty and should be refactored
+ * The service that provides opportunity to attach the content to the {@link SidenavProjectionContentComponent}
  */
 @Injectable({
   providedIn: 'root'
@@ -15,50 +11,39 @@ import {SIDENAV_PROJECTION_ITEM_DATA} from './sidenav-projection-idem-data.key';
 export class SidenavProjectionService {
 
   /**
-   * A subject represents the array of items to render
+   * A subject represents the array of attachments
    */
-    // tslint:disable-next-line:no-any
-  readonly items$ = new BehaviorSubject<SidenavProjectionItem<any>[]>([]);
+  readonly attachments$ = new BehaviorSubject<SidenavAttachment[]>([]);
 
-  constructor(private readonly injector: Injector) { }
+  constructor() { }
 
   /**
-   * Attach the given component
+   * Attach the given attachment
+   */
+  attach<T>(attachment: SidenavAttachment<T>): boolean {
+    const attachments = this.attachments$.getValue();
+    attachments.push(attachment);
+
+    this.attachments$.next(attachments);
+    return true;
+  }
+
+  /**
+   * Detach the attachment by the given predicate function
    *
-   * @param component component type
-   * @param data data for the component that is accessible from component by using {@link SIDENAV_PROJECTION_ITEM_DATA} DI token
+   * @param predicate predicate function that searches specific attachment
    */
-  attach<T, D>(component: Type<T>, data?: D): SidenavProjectionItem<T> {
-    const injector = this.createInjector([
-      {
-        provide: SIDENAV_PROJECTION_ITEM_DATA,
-        useValue: data,
-      }
-    ]);
+  detach(predicate: (attachment: SidenavAttachment) => boolean): boolean {
+    const attachments = this.attachments$.getValue();
+    const index = attachments.findIndex(predicate);
 
-    const portal = new ComponentPortal(component, null, injector);
+    if (index < 0) {
+      return false;
+    }
 
-    return this.createAndInsertItem(portal);
-  }
+    const removed = attachments.splice(index, 1);
+    this.attachments$.next(attachments);
 
-  /**
-   * Creates new item and insert it to {@link items$}
-   */
-  private createAndInsertItem<T>(portal: ComponentPortal<T>): SidenavProjectionItem<T> {
-    const items = this.items$.getValue().filter(item => item.portal.isAttached);
-
-    const newItem = new SidenavProjectionItem(portal, items.length);
-
-    items.push(newItem);
-    this.items$.next(items);
-
-    return newItem;
-  }
-
-  /**
-   * Create new injector
-   */
-  private createInjector(providers: StaticProvider[]): Injector {
-    return Injector.create({ parent: this.injector, providers });
+    return removed.length > 0;
   }
 }

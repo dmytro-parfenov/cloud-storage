@@ -17,3 +17,7 @@
     </div>
   </main>
 </section>
+
+<ng-template #storagePortalTemplate>
+  <cs-storage [used]="usedStorageSize$ | async" [total]="totalStorageSize$ | async"></cs-storage>
+</ng-template>

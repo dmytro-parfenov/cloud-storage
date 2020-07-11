@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, OnInit, Optional} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {MeasurementUnit} from '../pipe/measurement-unit/measurement-unit';
-import {SIDENAV_PROJECTION_ITEM_DATA} from '../../core/sidenav/sidenav-projection-idem-data.key';
 import {StorageData} from './storage-data';
 
 @Component({
@@ -14,12 +13,12 @@ export class StorageComponent implements OnInit {
   /**
    * @see StorageData.used
    */
-  @Input() used = 0;
+  @Input() used: number | null = 0;
 
   /**
    * @see StorageData.total
    */
-  @Input() total = 0;
+  @Input() total: number | null = 0;
 
   /**
    * @see StorageData.measurementUnit
@@ -27,18 +26,12 @@ export class StorageComponent implements OnInit {
   @Input() measurementUnit: MeasurementUnit = 'Gb';
 
   get usedInPercent(): number {
-    return ((this.used < this.total) && !!this.total) ? this.used / this.total * 100 : 0;
+    return (((this.used || 0) < (this.total || 0)) && !!this.total) ? (this.used || 0) / this.total * 100 : 0;
   }
 
-  constructor(@Optional() @Inject(SIDENAV_PROJECTION_ITEM_DATA) private readonly data: StorageData) { }
+  constructor() { }
 
   ngOnInit(): void {
-    if (!this.data) {
-      return;
-    }
-
-    this.used = this.data.used;
-    this.total = this.data.total;
   }
 
 }

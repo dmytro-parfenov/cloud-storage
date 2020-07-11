@@ -9,7 +9,9 @@ import {MeasurementUnit} from './measurement-unit';
 })
 export class MeasurementUnitPipe implements PipeTransform {
 
-  transform(value: number, from: MeasurementUnit, to: MeasurementUnit): number {
+  transform(value: number | null, from: MeasurementUnit, to: MeasurementUnit): number {
+    value = value ? value : 0;
+
     const kbValue = this.fromValue(value, from);
 
     return this.toSizeUnit(kbValue, to);

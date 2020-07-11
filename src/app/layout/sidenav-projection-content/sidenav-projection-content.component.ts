@@ -10,8 +10,8 @@ import {map} from 'rxjs/operators';
 })
 export class SidenavProjectionContentComponent {
 
-  readonly items$ = this.sidenavProjectionService.items$.asObservable().pipe(
-    map(items => items.sort((a, b) => b.order - a.order))
+  readonly attachments$ = this.sidenavProjectionService.attachments$.asObservable().pipe(
+    map(attachments => attachments.sort((a, b) => a.order - b.order))
   );
 
   constructor(private readonly sidenavProjectionService: SidenavProjectionService) { }
