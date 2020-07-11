@@ -104,6 +104,9 @@ $page-indent: 16px;
         }
 
         .menu {
+          justify-self: self-start;
+          margin-left: 16px;
+
           @include media-breakpoint-up(md) {
             display: none;
           }
