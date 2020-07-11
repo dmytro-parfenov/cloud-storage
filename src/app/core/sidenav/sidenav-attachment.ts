@@ -6,9 +6,8 @@ import * as uuid from 'uuid';
  */
 export class SidenavAttachment<T = any> {
 
-  readonly id = uuid.v4();
-
   constructor(readonly portal: Portal<T>,
-              readonly order: number) {
+              readonly order: number,
+              readonly id = uuid.v4()) {
   }
 }

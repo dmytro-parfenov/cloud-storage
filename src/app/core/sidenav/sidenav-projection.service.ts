@@ -22,6 +22,12 @@ export class SidenavProjectionService {
    */
   attach<T>(attachment: SidenavAttachment<T>): boolean {
     const attachments = this.attachments$.getValue();
+
+    if (attachments.some(a => a.id === attachment.id)) {
+      console.warn(`Attachment with id: "${attachment.id}" already exists.`);
+      return false;
+    }
+
     attachments.push(attachment);
 
     this.attachments$.next(attachments);
