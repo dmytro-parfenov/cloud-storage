@@ -1,0 +1,21 @@
+@import "~src/styles/utils";
+
+section {
+  display: inline-flex;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: $color-dark;
+  user-select: none;
+
+  &.disabled {
+    color: $color-grey;
+    pointer-events: none;
+  }
+
+  &:hover {
+    &:not(.disabled) {
+      opacity: 0.8;
+    }
+  }
+}

@@ -19,11 +19,12 @@ export class SortingComponent implements OnInit, OnDestroy {
     }
 
     this.form.get('type')?.setValue(sortParams.type, {emitEvent: false});
+    this.form.get('order')?.setValue(sortParams.order, {emitEvent: false});
   }
 
   @Output() sortParamsChange = new EventEmitter<SortParams>();
 
-  form = this.buildForm();
+  readonly form = this.buildForm();
 
   private destroy$ = new Subject<void>();
 
@@ -48,15 +49,14 @@ export class SortingComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private onChangeSortParams(sortParams: Partial<SortParams>): void {
-    if (sortParams.type) {
-      this.sortParamsChange.emit(new SortParams({type: sortParams.type}));
-    }
+  private onChangeSortParams(sortParams: SortParams): void {
+    this.sortParamsChange.emit(new SortParams(sortParams));
   }
 
   private buildForm(sortParams: SortParams = new SortParams()): FormGroup {
     return this.formBuilder.group({
       type: [sortParams.type],
+      order: [sortParams.order],
     });
   }
 

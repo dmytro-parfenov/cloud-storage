@@ -13,10 +13,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {ReactiveFormsModule} from '@angular/forms';
+import { SortingOrderComponent } from './photos/sorting/sorting-order/sorting-order.component';
 
 
 @NgModule({
-  declarations: [PhotosComponent, PhotoComponent, ActionsComponent, SortingComponent],
+  declarations: [PhotosComponent, PhotoComponent, ActionsComponent, SortingComponent, SortingOrderComponent],
   imports: [
     PhotosRoutingModule,
     SharedModule,

@@ -2,4 +2,6 @@
   <mat-button-toggle-group formControlName="type">
     <mat-button-toggle *ngFor="let type of types" [value]="type"><span>{{type}}</span></mat-button-toggle>
   </mat-button-toggle-group>
+
+  <cs-sorting-order formControlName="order"></cs-sorting-order>
 </form>
