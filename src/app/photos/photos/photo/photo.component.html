@@ -3,5 +3,6 @@
   <figcaption>
     <p *ngIf="name">{{name}}</p>
     <p *ngIf="size" class="size">{{size | measurementUnit:'Kb':'Mb' | number:'1.0-1'}} Mb</p>
+    <p *ngIf="dateTime">{{dateTime | date:'medium'}}</p>
   </figcaption>
 </figure>

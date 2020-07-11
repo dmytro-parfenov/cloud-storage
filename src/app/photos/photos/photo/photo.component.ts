@@ -10,6 +10,7 @@ export class PhotoComponent implements OnInit {
 
   @Input() url = '';
   @Input() name = '';
+  @Input() dateTime = '';
   @Input() size = 0;
 
   constructor() { }
