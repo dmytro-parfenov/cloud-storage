@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {PageHeaderService} from '../../core/page-header.service';
+import {PageHeaderService} from '../../core/page-header/page-header.service';
 import {ActivatedRoute} from '@angular/router';
+import {PageHeaderTitle} from '../../core/page-header/page-header-title';
 
 @Component({
   selector: 'cs-stub',
@@ -10,19 +11,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class StubComponent implements OnInit, OnDestroy {
 
-  readonly pageTitle: string;
+  readonly pageHeaderTitle: PageHeaderTitle;
 
   constructor(private readonly pageHeaderService: PageHeaderService,
               private readonly activatedRoute: ActivatedRoute) {
-    this.pageTitle = this.activatedRoute.snapshot.data.pageTitle || '';
+    this.pageHeaderTitle = new PageHeaderTitle(this.activatedRoute.snapshot.data.pageTitle || '');
   }
 
   ngOnInit(): void {
-    this.pageHeaderService.add(this.pageTitle);
+    this.pageHeaderService.add(this.pageHeaderTitle);
   }
 
   ngOnDestroy(): void {
-    this.pageHeaderService.remove(this.pageTitle);
+    this.pageHeaderService.remove(title => title.id === this.pageHeaderTitle.id);
   }
 
 }

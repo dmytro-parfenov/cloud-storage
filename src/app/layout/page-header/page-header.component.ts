@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {PageHeaderService} from '../../core/page-header.service';
+import {PageHeaderService} from '../../core/page-header/page-header.service';
 
 @Component({
   selector: 'cs-page-header',
@@ -12,7 +12,8 @@ import {PageHeaderService} from '../../core/page-header.service';
 export class PageHeaderComponent implements OnInit {
 
   readonly title$: Observable<string> = this.pageHeaderService.titles$.pipe(
-    map(titles => titles.join(' / '))
+    map(titles => titles.reduce<string[]>((previousValue, currentValue) => previousValue.concat(currentValue.name), [])),
+    map(names => names.join(' / '))
   );
 
   readonly visible$ = this.title$.pipe(

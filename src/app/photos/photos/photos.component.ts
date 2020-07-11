@@ -12,7 +12,8 @@ import {PhotosSorter} from './photos-sorter';
 import {SidenavProjectionService} from '../../core/sidenav/sidenav-projection.service';
 import {TemplatePortal} from '@angular/cdk/portal';
 import {SidenavAttachment} from '../../core/sidenav/sidenav-attachment';
-import {PageHeaderService} from '../../core/page-header.service';
+import {PageHeaderService} from '../../core/page-header/page-header.service';
+import {PageHeaderTitle} from '../../core/page-header/page-header-title';
 
 @Component({
   selector: 'cs-photos',
@@ -55,6 +56,8 @@ export class PhotosComponent implements OnInit, OnDestroy {
    */
   private storageAttachment: SidenavAttachment | null = null;
 
+  private pageHeaderTitle = new PageHeaderTitle('Photos');
+
   constructor(private readonly activatedRoute: ActivatedRoute,
               private readonly queryParamsService: QueryParamsService,
               private readonly sidenavProjectionService: SidenavProjectionService,
@@ -63,7 +66,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
               @Inject(PHOTOS_PROVIDER) private readonly photosProviderService: PhotosProvider) {}
 
   ngOnInit(): void {
-    this.pageHeaderService.add('Photos');
+    this.pageHeaderService.add(this.pageHeaderTitle);
 
     this.activatedRoute.data.subscribe(data => this.onRouterDataChange(data as PhotosResolvedData));
 
@@ -71,7 +74,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.pageHeaderService.remove('Photos');
+    this.pageHeaderService.remove(title => title.id === this.pageHeaderTitle.id);
 
     this.sidenavProjectionService.detach(attachment => attachment.id === this.storageAttachment?.id);
   }
