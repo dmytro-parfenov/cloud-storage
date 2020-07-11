@@ -58,6 +58,11 @@ export class PhotosComponent implements OnInit, OnDestroy {
 
   private pageHeaderTitle = new PageHeaderTitle('Photos');
 
+  /**
+   * A map object that stores selected photos by {@link Photo.url} key
+   */
+  private selectedPhotos = new Map<string, Photo>();
+
   constructor(private readonly activatedRoute: ActivatedRoute,
               private readonly queryParamsService: QueryParamsService,
               private readonly sidenavProjectionService: SidenavProjectionService,
@@ -88,6 +93,26 @@ export class PhotosComponent implements OnInit, OnDestroy {
    */
   trackFn(index: number): number {
     return index;
+  }
+
+  /**
+   * Select or unselect the given photo
+   */
+  toggleSelection(photo: Photo): void {
+    const deleted = this.selectedPhotos.delete(photo.url);
+
+    if (deleted) {
+      return;
+    }
+
+    this.selectedPhotos.set(photo.url, photo);
+  }
+
+  /**
+   * Check whether is photo selected
+   */
+  isSelected(photo: Photo): boolean {
+    return this.selectedPhotos.has(photo.url);
   }
 
   private onRouterDataChange(data: PhotosResolvedData): void {
