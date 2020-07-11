@@ -12,6 +12,7 @@ import {PhotosSorter} from './photos-sorter';
 import {SidenavProjectionService} from '../../core/sidenav/sidenav-projection.service';
 import {TemplatePortal} from '@angular/cdk/portal';
 import {SidenavAttachment} from '../../core/sidenav/sidenav-attachment';
+import {PageHeaderService} from '../../core/page-header.service';
 
 @Component({
   selector: 'cs-photos',
@@ -58,15 +59,20 @@ export class PhotosComponent implements OnInit, OnDestroy {
               private readonly queryParamsService: QueryParamsService,
               private readonly sidenavProjectionService: SidenavProjectionService,
               private readonly viewContainerRef: ViewContainerRef,
+              private readonly pageHeaderService: PageHeaderService,
               @Inject(PHOTOS_PROVIDER) private readonly photosProviderService: PhotosProvider) {}
 
   ngOnInit(): void {
+    this.pageHeaderService.add('Photos');
+
     this.activatedRoute.data.subscribe(data => this.onRouterDataChange(data as PhotosResolvedData));
 
     this.photosProviderService.get().subscribe(photos => this.photos$.next(photos));
   }
 
   ngOnDestroy(): void {
+    this.pageHeaderService.remove('Photos');
+
     this.sidenavProjectionService.detach(attachment => attachment.id === this.storageAttachment?.id);
   }
 
